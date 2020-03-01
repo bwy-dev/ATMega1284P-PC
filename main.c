@@ -1,5 +1,6 @@
 #include "main.h"
 #include "keyboard.h"
+#include "vga.h"
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
@@ -10,35 +11,27 @@
  * PORTA 6-7: HSYNC & VSYNC
  */
 
-
-/* 
- * Initializes timer 1. CS02 and CS00 are set high
- * running at 1024th base clock speed, around 20khz
- */
 void timer1_init()
 {
-    TCCR1A |= 0x00000101 ; 
-    TCNT1 = 0;
+    TCCR1A |= 0x00000101; //Initializes timer 1. CS02 and CS00 are set high so it will
+                          //run at 1024th base clock speed, around 20khz
+    TCNT1 = 0;            //then reset value to 0.
+}
+
+void port_init()
+{
+    DDRD = 0x00; //set port d to input
+    DDRA = 0xFF; //set port a to ouput
 }
 
 int main (void)
 {
-    DDRD = 0x00;
-    DDRA = 0xFF;
-
+    port_init();
     timer1_init();
     sei();
     
     while(1) 
     {
-        if(get_key() < 0x00)
-        {
-            set_key(PORTA);
-        }
-        else
-        {
-            PORTA = 0x00;
-        }
-        
+        vga_write_buffer_to_screen();
     }
 }
