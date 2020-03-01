@@ -1,5 +1,5 @@
 DEVICE = atmega1284p
-OBJS= main.o keyboard.o
+OBJS= main.o keyboard.o vga.o
 COMPILE= avr-gcc -Wall -Os -mmcu=$(DEVICE)
 
 all: main.hex
@@ -13,6 +13,8 @@ main.elf: $(OBJS)
 main.hex: main.elf
 		rm -f main.hex
 		avr-objcopy -j .text -j .data -O ihex main.elf main.hex
+		avr-size -C --mcu=$(DEVICE) main.elf
+		make clean
 
 clean: 
-		rm -f main.elf $(OBJS)
+		rm -f $(OBJS)
