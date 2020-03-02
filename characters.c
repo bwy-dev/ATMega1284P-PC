@@ -3,7 +3,7 @@
 #include "vga.h"
 #include "main.h"
 
- char CHAR_SPACE[6][4] = {
+ volatile char CHAR_SPACE[6][4] = {
     {BLACK,BLACK,BLACK,BLACK},
     {BLACK,BLACK,BLACK,BLACK},
     {BLACK,BLACK,BLACK,BLACK},
@@ -12,7 +12,7 @@
     {BLACK,BLACK,BLACK,BLACK}
 };
 
- char CHAR_A_UP[6][4] = {
+ volatile char CHAR_A_UP[6][4] = {
     {BLACK,WHITE,WHITE,BLACK},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
@@ -21,7 +21,7 @@
     {WHITE,BLACK,BLACK,WHITE}
 };
 
- char CHAR_B_UP[6][4] = {
+ volatile volatile char CHAR_B_UP[6][4] = {
     {WHITE,WHITE,WHITE,BLACK},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,WHITE,WHITE,BLACK},
@@ -30,7 +30,7 @@
     {WHITE,WHITE,WHITE,BLACK}
 };
 
- char CHAR_C_UP[6][4] = {
+ volatile char CHAR_C_UP[6][4] = {
     {BLACK,WHITE,WHITE,BLACK},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,BLACK},
@@ -39,7 +39,7 @@
     {WHITE,BLACK,BLACK,WHITE}
 };
 
- char CHAR_D_UP[6][4] = {
+ volatile char CHAR_D_UP[6][4] = {
     {WHITE,WHITE,WHITE,BLACK},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
@@ -48,7 +48,7 @@
     {WHITE,WHITE,WHITE,BLACK}
 };
 
- char CHAR_E_UP[6][4] = {
+ volatile char CHAR_E_UP[6][4] = {
     {WHITE,WHITE,WHITE,WHITE},
     {WHITE,BLACK,BLACK,BLACK},
     {WHITE,WHITE,WHITE,WHITE},
@@ -57,7 +57,7 @@
     {WHITE,WHITE,WHITE,WHITE}
 };
 
- char CHAR_F_UP[6][4] = {
+ volatile char CHAR_F_UP[6][4] = {
     {WHITE,WHITE,WHITE,WHITE},
     {WHITE,BLACK,BLACK,BLACK},
     {WHITE,BLACK,BLACK,BLACK},
@@ -66,7 +66,7 @@
     {WHITE,BLACK,BLACK,BLACK}
 };
 
- char CHAR_G_UP[6][4] = {
+ volatile char CHAR_G_UP[6][4] = {
     {BLACK,WHITE,WHITE,BLACK},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,BLACK},
@@ -75,7 +75,7 @@
     {BLACK,WHITE,WHITE,BLACK}
 };
 
- char CHAR_H_UP[6][4] = {
+ volatile char CHAR_H_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
@@ -84,7 +84,7 @@
     {WHITE,BLACK,BLACK,WHITE}
 };
 
- char CHAR_I_UP[6][4] = {
+ volatile char CHAR_I_UP[6][4] = {
     {BLACK,BLACK,WHITE,BLACK},
     {BLACK,BLACK,WHITE,BLACK},
     {BLACK,BLACK,WHITE,BLACK},
@@ -93,7 +93,7 @@
     {BLACK,BLACK,WHITE,BLACK}
 };
 
- char CHAR_J_UP[6][4] = {
+ volatile char CHAR_J_UP[6][4] = {
     {WHITE,WHITE,WHITE,WHITE},
     {BLACK,BLACK,WHITE,BLACK},
     {BLACK,BLACK,WHITE,BLACK},
@@ -102,7 +102,7 @@
     {WHITE,WHITE,BLACK,BLACK}
 };
 
- char CHAR_K_UP[6][4] = {
+ volatile char CHAR_K_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,WHITE,BLACK},
     {WHITE,WHITE,BLACK,BLACK},
@@ -111,7 +111,7 @@
     {WHITE,BLACK,BLACK,WHITE}
 };
 
- char CHAR_L_UP[6][4] = {
+ volatile char CHAR_L_UP[6][4] = {
     {WHITE,BLACK,BLACK,BLACK},
     {WHITE,BLACK,BLACK,BLACK},
     {WHITE,BLACK,BLACK,BLACK},
@@ -120,7 +120,7 @@
     {WHITE,WHITE,WHITE,WHITE}
 };
 
- char CHAR_M_UP[6][4] = {
+ volatile char CHAR_M_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,WHITE,WHITE,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
@@ -129,7 +129,7 @@
     {WHITE,BLACK,BLACK,WHITE}
 };
 
- char CHAR_N_UP[6][4] = {
+ volatile char CHAR_N_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,WHITE,BLACK,WHITE},
     {WHITE,BLACK,WHITE,WHITE},
@@ -138,7 +138,7 @@
     {WHITE,BLACK,BLACK,WHITE}
 };
 
- char CHAR_O_UP[6][4] = {
+ volatile char CHAR_O_UP[6][4] = {
     {BLACK,WHITE,WHITE,BLACK},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
@@ -147,7 +147,7 @@
     {BLACK,WHITE,WHITE,BLACK}
 };
 
- char CHAR_P_UP[6][4] = {
+ volatile char CHAR_P_UP[6][4] = {
     {WHITE,WHITE,WHITE,BLACK},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
@@ -156,7 +156,7 @@
     {WHITE,BLACK,BLACK,BLACK}
 };
 
- char CHAR_Q_UP[6][4] = {
+ volatile char CHAR_Q_UP[6][4] = {
     {BLACK,WHITE,WHITE,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
@@ -165,7 +165,7 @@
     {BLACK,BLACK,BLACK,WHITE}
 };
 
- char CHAR_R_UP[6][4] = {
+ volatile char CHAR_R_UP[6][4] = {
     {WHITE,WHITE,WHITE,BLACK},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
@@ -174,7 +174,7 @@
     {WHITE,BLACK,BLACK,WHITE}
 };
 
- char CHAR_S_UP[6][4] = {
+ volatile char CHAR_S_UP[6][4] = {
     {BLACK,WHITE,WHITE,WHITE},
     {WHITE,BLACK,BLACK,BLACK},
     {BLACK,WHITE,WHITE,BLACK},
@@ -183,7 +183,7 @@
     {WHITE,WHITE,WHITE,BLACK}
 };
 
- char CHAR_T_UP[6][4] = {
+ volatile char CHAR_T_UP[6][4] = {
     {BLACK,WHITE,WHITE,WHITE},
     {BLACK,BLACK,WHITE,BLACK},
     {BLACK,BLACK,WHITE,BLACK},
@@ -192,7 +192,7 @@
     {BLACK,BLACK,WHITE,BLACK}
 };
 
- char CHAR_U_UP[6][4] = {
+ volatile char CHAR_U_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
@@ -201,7 +201,7 @@
     {BLACK,WHITE,WHITE,BLACK}
 };
 
- char CHAR_V_UP[6][4] = {
+ volatile char CHAR_V_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
@@ -210,7 +210,7 @@
     {BLACK,WHITE,BLACK,BLACK}
 };
 
- char CHAR_W_UP[6][4] = {
+ volatile char CHAR_W_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
@@ -219,7 +219,7 @@
     {WHITE,BLACK,BLACK,WHITE}
 };
 
- char CHAR_X_UP[6][4] = {
+ volatile char CHAR_X_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
@@ -228,7 +228,7 @@
     {WHITE,BLACK,BLACK,WHITE}
 };
 
- char CHAR_Y_UP[6][4] = {
+ volatile char CHAR_Y_UP[6][4] = {
     {BLACK,WHITE,BLACK,WHITE},
     {BLACK,WHITE,BLACK,WHITE},
     {BLACK,WHITE,BLACK,WHITE},
@@ -237,7 +237,7 @@
     {BLACK,BLACK,WHITE,BLACK}
 };
 
- char CHAR_Z_UP[6][4] = {
+ volatile char CHAR_Z_UP[6][4] = {
     {WHITE,WHITE,WHITE,WHITE},
     {BLACK,BLACK,BLACK,WHITE},
     {BLACK,BLACK,WHITE,BLACK},
