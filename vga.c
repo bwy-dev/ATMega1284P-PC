@@ -14,8 +14,8 @@
 #include "keyboard.h"
 #include <avr/io.h>
 
-volatile char SCREEN_CONTENTS[FB_WIDTH/CHAR_WIDTH][FB_HEIGHT/CHAR_HEIGHT]; //Actual characters currently on screen
-volatile char FRAME_BUFFER[FB_WIDTH][FB_HEIGHT];                           //individual pixels on screen
+volatile byte SCREEN_CONTENTS[FB_WIDTH/CHAR_WIDTH][FB_HEIGHT/CHAR_HEIGHT]; //Actual characters currently on screen
+volatile byte FRAME_BUFFER[FB_WIDTH][FB_HEIGHT];                           //individual pixels on screen
 struct Coord cursor_location;
 
 void vga_init()
@@ -33,32 +33,39 @@ void vga_write_buffer_to_screen()
     uint8_t x,y;
     for(y = 0; y< FB_HEIGHT; y++){
         uint8_t i;
-        //print same row RES_HEIGHT/FB_HEIGHT times, to reduce resolution and make up for limited storage.
+        //print same row multiple times, to reduce resolution and make up for limited storage.
         for(i = 0; i< RES_HEIGHT/FB_HEIGHT; i++ ) 
         {
             for(x = 0; x<FB_WIDTH; x++){
                 uint8_t j;
-                //print same pixel RES_WIDTH/FB_WIDTH times, to reduce resolution and make up for limited storage.
-                for(j = 0; j < RES_WIDTH/FB_WIDTH; j++){
-                    PORTA = FRAME_BUFFER[x][y];
+                //print same pixel multiple times, to reduce resolution and make up for limited storage.
+                for(j = 0; j < RES_WIDTH/FB_WIDTH/PIXELS_PER_BYTE; j++){
+                    PORTA = (FRAME_BUFFER[x][y] & BYTEMASKH) >> 4;
+                }
+                for(j = 0; j < RES_WIDTH/FB_WIDTH/PIXELS_PER_BYTE; j++){
+                    PORTA = (FRAME_BUFFER[x][y] & BYTEMASKL);
                 }
             }
-            //Some Code here for waiting out front/rear porch and sync pulse timings
+            //Some code here to do while waiting out front/rear porch and sync pulse timings
             PORTA = (1 << HSYNC); //send HSYNC signal to move on to next line
         }
     }
+    //Some code here to do while waiting out vertical timings
     PORTA = (1 << VSYNC); //send VSYNC signal to return to top left of screen
 }
 
-void vga_add_char_to_screen_buffer(unsigned char arr[6][4])
+void vga_add_char_to_screen_buffer(char arr[6][4])
 {
     uint8_t x = cursor_location.x * CHAR_WIDTH;
     uint8_t y = cursor_location.y * CHAR_HEIGHT;
     uint8_t i,j;
 
     for(i = 0; i < LEN(arr); i++){
-        for(j = 0; j < LEN(arr[0]); j++){
-            FRAME_BUFFER[x + j][y + i] = arr[j][i];
+        for(j = 0; j < LEN(arr[0])/2; j++){
+          byte most_sig_half = arr[i][j];
+          byte least_sig_half = arr[i][j+1];
+          byte byte_to_add = (most_sig_half<< 4) & least_sig_half; 
+          FRAME_BUFFER[x + j][y + i] = byte_to_add;
         }
     }
 }
@@ -79,55 +86,122 @@ void vga_move_cursor()
 }
 
 
-void vga_add_char_at_cursor(char c)
+void vga_add_char_at_cursor(char b)
 {
-    switch (c)
+    char c;
+    switch (b)
     {
-    case KEY_A:
-         vga_add_char_to_screen_buffer(CHAR_A_UP);
-        break;
-    case KEY_B:
+      case KEY_A:
+          vga_add_char_to_screen_buffer(CHAR_A_UP);
+          c = 'A';
+          break;
+      case KEY_B:
           vga_add_char_to_screen_buffer(CHAR_B_UP);
-        break;
-    case KEY_C:
+          c = 'B';
+          break;
+      case KEY_C:
           vga_add_char_to_screen_buffer(CHAR_C_UP);
-        break;
-    case KEY_D:
+          c = 'C';
+          break;
+      case KEY_D:
           vga_add_char_to_screen_buffer(CHAR_D_UP);
-        break;
-    case KEY_E:
+          c = 'D';
+          break;
+      case KEY_E:
           vga_add_char_to_screen_buffer(CHAR_E_UP);
-        break;
-    case KEY_F:
+          c = 'E';
+          break;
+      case KEY_F:
           vga_add_char_to_screen_buffer(CHAR_F_UP);
-        break;
-    case KEY_G:
+          c = 'F';
+          break;
+      case KEY_G:
           vga_add_char_to_screen_buffer(CHAR_G_UP);
-        break;
-    case KEY_H:
+          c = 'G';
+          break;
+      case KEY_H:
           vga_add_char_to_screen_buffer(CHAR_H_UP);
-        break;
-    case KEY_I:
+          c = 'H';
+          break;
+      case KEY_I:
           vga_add_char_to_screen_buffer(CHAR_I_UP);
-        break;
-    case KEY_J:
+          c = 'I';
+          break;
+      case KEY_J:
           vga_add_char_to_screen_buffer(CHAR_J_UP);
-        break;
-    case KEY_K:
+          c = 'J';
+          break;
+      case KEY_K:
           vga_add_char_to_screen_buffer(CHAR_K_UP);
-        break;
-    case KEY_L:
+          c = 'K';
+          break;
+      case KEY_L:
           vga_add_char_to_screen_buffer(CHAR_L_UP);
-        break;
-    case KEY_M:
+          c = 'L';
+          break;
+      case KEY_M:
           vga_add_char_to_screen_buffer(CHAR_M_UP);
-        break;
-    case KEY_N:
+          c = 'M';
+          break;
+      case KEY_N:
           vga_add_char_to_screen_buffer(CHAR_N_UP);
-        break;
-    default:
+          c = 'N';
+          break;
+      case KEY_O:
+          vga_add_char_to_screen_buffer(CHAR_O_UP);
+          c = 'O';
+          break;
+      case KEY_P:
+          vga_add_char_to_screen_buffer(CHAR_P_UP);
+          c = 'P';
+          break;
+      case KEY_Q:
+          vga_add_char_to_screen_buffer(CHAR_Q_UP);
+          c = 'Q';
+          break;
+      case KEY_R:
+          vga_add_char_to_screen_buffer(CHAR_R_UP);
+          c = 'R';
+          break;
+      case KEY_S:
+          vga_add_char_to_screen_buffer(CHAR_S_UP);
+          c = 'S';
+          break;
+      case KEY_T:
+          vga_add_char_to_screen_buffer(CHAR_T_UP);
+          c = 'T';
+          break;
+      case KEY_U:
+          vga_add_char_to_screen_buffer(CHAR_U_UP);
+          c = 'U';
+          break;
+      case KEY_V:
+          vga_add_char_to_screen_buffer(CHAR_V_UP);
+          c = 'V';
+          break;
+      case KEY_W:
+          vga_add_char_to_screen_buffer(CHAR_W_UP);
+          c = 'W';
+          break;
+      case KEY_X:
+          vga_add_char_to_screen_buffer(CHAR_X_UP);
+          c = 'X';
+          break;
+      case KEY_Y:
+          vga_add_char_to_screen_buffer(CHAR_Y_UP);
+          c = 'Y';
+          break;
+      case KEY_Z:
+          vga_add_char_to_screen_buffer(CHAR_Z_UP);
+          c = 'Z';
+          break;
+      case KEY_SPACE:
+          vga_add_char_to_screen_buffer(CHAR_SPACE);
+          c = ' ';
+          break;
+      default:
           vga_add_char_to_screen_buffer(CHAR_SPACE); 
-        break;
+          break;
     }
     SCREEN_CONTENTS[cursor_location.x][cursor_location.y] = c;
     vga_move_cursor();
