@@ -28,14 +28,14 @@ void vga_add_char_at_cursor(char c);
  * |R|R|G|G|B|B|x|x|
  * the second of each color is a darker shade */
 
-#define RED     0x11000000
-#define GREEN   0x00110000
-#define BLUE    0x00001100
-#define BLACK   0x00000000
-#define WHITE   0x11111100
-#define YELLOW  0x11110000
-#define PURPLE  0x11001100
-#define CYAN    0x00111100
+#define RED     0b11000000
+#define GREEN   0b00110000
+#define BLUE    0b00001100
+#define BLACK   0b00000000
+#define WHITE   0b11111100
+#define YELLOW  0b11110000
+#define PURPLE  0b11001100
+#define CYAN    0b00111100
 #endif
 
 #ifndef COORD_STRUCT
@@ -52,30 +52,30 @@ struct Coord
 #define EXTERN extern
 #endif
 
-EXTERN char CHAR_A_UP[6][4];
-EXTERN char CHAR_B_UP[6][4];
-EXTERN char CHAR_C_UP[6][4];
-EXTERN char CHAR_D_UP[6][4];
-EXTERN char CHAR_E_UP[6][4];
-EXTERN char CHAR_F_UP[6][4];
-EXTERN char CHAR_G_UP[6][4];
-EXTERN char CHAR_H_UP[6][4];
-EXTERN char CHAR_I_UP[6][4];
-EXTERN char CHAR_J_UP[6][4];
-EXTERN char CHAR_K_UP[6][4];
-EXTERN char CHAR_L_UP[6][4];
-EXTERN char CHAR_M_UP[6][4];
-EXTERN char CHAR_N_UP[6][4];
-EXTERN char CHAR_O_UP[6][4];
-EXTERN char CHAR_P_UP[6][4];
-EXTERN char CHAR_Q_UP[6][4];
-EXTERN char CHAR_R_UP[6][4];
-EXTERN char CHAR_S_UP[6][4];
-EXTERN char CHAR_T_UP[6][4];
-EXTERN char CHAR_U_UP[6][4];
-EXTERN char CHAR_V_UP[6][4];
-EXTERN char CHAR_W_UP[6][4];
-EXTERN char CHAR_X_UP[6][4];
-EXTERN char CHAR_Y_UP[6][4];
-EXTERN char CHAR_Z_UP[6][4];
-EXTERN char CHAR_SPACE[6][4];
+EXTERN  unsigned char CHAR_A_UP[6][4];
+EXTERN  unsigned char CHAR_B_UP[6][4];
+EXTERN  unsigned char CHAR_C_UP[6][4];
+EXTERN  unsigned char CHAR_D_UP[6][4];
+EXTERN  unsigned char CHAR_E_UP[6][4];
+EXTERN  unsigned char CHAR_F_UP[6][4];
+EXTERN  unsigned char CHAR_G_UP[6][4];
+EXTERN  unsigned char CHAR_H_UP[6][4];
+EXTERN  unsigned char CHAR_I_UP[6][4];
+EXTERN  unsigned char CHAR_J_UP[6][4];
+EXTERN  unsigned char CHAR_K_UP[6][4];
+EXTERN  unsigned char CHAR_L_UP[6][4];
+EXTERN  unsigned char CHAR_M_UP[6][4];
+EXTERN  unsigned char CHAR_N_UP[6][4];
+EXTERN  unsigned char CHAR_O_UP[6][4];
+EXTERN  unsigned char CHAR_P_UP[6][4];
+EXTERN  unsigned char CHAR_Q_UP[6][4];
+EXTERN  unsigned char CHAR_R_UP[6][4];
+EXTERN  unsigned char CHAR_S_UP[6][4];
+EXTERN  unsigned char CHAR_T_UP[6][4];
+EXTERN  unsigned char CHAR_U_UP[6][4];
+EXTERN  unsigned char CHAR_V_UP[6][4];
+EXTERN  unsigned char CHAR_W_UP[6][4];
+EXTERN  unsigned char CHAR_X_UP[6][4];
+EXTERN  unsigned char CHAR_Y_UP[6][4];
+EXTERN  unsigned char CHAR_Z_UP[6][4];
+EXTERN  unsigned char CHAR_SPACE[6][4];

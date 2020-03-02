@@ -1,7 +1,9 @@
 
 #define DEFINE_GLOBALS
 #include "vga.h"
-char CHAR_SPACE[6][4] = {
+#include "main.h"
+
+ uint8_t CHAR_SPACE[6][4] = {
     {BLACK,BLACK,BLACK,BLACK},
     {BLACK,BLACK,BLACK,BLACK},
     {BLACK,BLACK,BLACK,BLACK},
@@ -10,7 +12,7 @@ char CHAR_SPACE[6][4] = {
     {BLACK,BLACK,BLACK,BLACK}
 };
 
-char CHAR_A_UP[6][4] = {
+ uint8_t CHAR_A_UP[6][4] = {
     {BLACK,WHITE,WHITE,BLACK},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
@@ -19,7 +21,7 @@ char CHAR_A_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE}
 };
 
-char CHAR_B_UP[6][4] = {
+ uint8_t CHAR_B_UP[6][4] = {
     {WHITE,WHITE,WHITE,BLACK},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,WHITE,WHITE,BLACK},
@@ -28,7 +30,7 @@ char CHAR_B_UP[6][4] = {
     {WHITE,WHITE,WHITE,BLACK}
 };
 
-char CHAR_C_UP[6][4] = {
+ uint8_t CHAR_C_UP[6][4] = {
     {BLACK,WHITE,WHITE,BLACK},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,BLACK},
@@ -37,7 +39,7 @@ char CHAR_C_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE}
 };
 
-char CHAR_D_UP[6][4] = {
+ uint8_t CHAR_D_UP[6][4] = {
     {WHITE,WHITE,WHITE,BLACK},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
@@ -46,7 +48,7 @@ char CHAR_D_UP[6][4] = {
     {WHITE,WHITE,WHITE,BLACK}
 };
 
-char CHAR_E_UP[6][4] = {
+ uint8_t CHAR_E_UP[6][4] = {
     {WHITE,WHITE,WHITE,WHITE},
     {WHITE,BLACK,BLACK,BLACK},
     {WHITE,WHITE,WHITE,WHITE},
@@ -55,7 +57,7 @@ char CHAR_E_UP[6][4] = {
     {WHITE,WHITE,WHITE,WHITE}
 };
 
-char CHAR_F_UP[6][4] = {
+ uint8_t CHAR_F_UP[6][4] = {
     {WHITE,WHITE,WHITE,WHITE},
     {WHITE,BLACK,BLACK,BLACK},
     {WHITE,BLACK,BLACK,BLACK},
@@ -64,7 +66,7 @@ char CHAR_F_UP[6][4] = {
     {WHITE,BLACK,BLACK,BLACK}
 };
 
-char CHAR_G_UP[6][4] = {
+ uint8_t CHAR_G_UP[6][4] = {
     {BLACK,WHITE,WHITE,BLACK},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,BLACK},
@@ -73,7 +75,7 @@ char CHAR_G_UP[6][4] = {
     {BLACK,WHITE,WHITE,BLACK}
 };
 
-char CHAR_H_UP[6][4] = {
+ uint8_t CHAR_H_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
@@ -82,7 +84,7 @@ char CHAR_H_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE}
 };
 
-char CHAR_I_UP[6][4] = {
+ uint8_t CHAR_I_UP[6][4] = {
     {BLACK,BLACK,WHITE,BLACK},
     {BLACK,BLACK,WHITE,BLACK},
     {BLACK,BLACK,WHITE,BLACK},
@@ -91,7 +93,7 @@ char CHAR_I_UP[6][4] = {
     {BLACK,BLACK,WHITE,BLACK}
 };
 
-char CHAR_J_UP[6][4] = {
+ uint8_t CHAR_J_UP[6][4] = {
     {WHITE,WHITE,WHITE,WHITE},
     {BLACK,BLACK,WHITE,BLACK},
     {BLACK,BLACK,WHITE,BLACK},
@@ -100,7 +102,7 @@ char CHAR_J_UP[6][4] = {
     {WHITE,WHITE,BLACK,BLACK}
 };
 
-char CHAR_K_UP[6][4] = {
+ uint8_t CHAR_K_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,WHITE,BLACK},
     {WHITE,WHITE,BLACK,BLACK},
@@ -109,7 +111,7 @@ char CHAR_K_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE}
 };
 
-char CHAR_L_UP[6][4] = {
+ uint8_t CHAR_L_UP[6][4] = {
     {WHITE,BLACK,BLACK,BLACK},
     {WHITE,BLACK,BLACK,BLACK},
     {WHITE,BLACK,BLACK,BLACK},
@@ -118,7 +120,7 @@ char CHAR_L_UP[6][4] = {
     {WHITE,WHITE,WHITE,WHITE}
 };
 
-char CHAR_M_UP[6][4] = {
+ uint8_t CHAR_M_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,WHITE,WHITE,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
@@ -127,7 +129,7 @@ char CHAR_M_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE}
 };
 
-char CHAR_N_UP[6][4] = {
+ uint8_t CHAR_N_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,WHITE,BLACK,WHITE},
     {WHITE,BLACK,WHITE,WHITE},
@@ -136,7 +138,7 @@ char CHAR_N_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE}
 };
 
-char CHAR_O_UP[6][4] = {
+ uint8_t CHAR_O_UP[6][4] = {
     {BLACK,WHITE,WHITE,BLACK},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
@@ -145,7 +147,7 @@ char CHAR_O_UP[6][4] = {
     {BLACK,WHITE,WHITE,BLACK}
 };
 
-char CHAR_P_UP[6][4] = {
+ uint8_t CHAR_P_UP[6][4] = {
     {WHITE,WHITE,WHITE,BLACK},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
@@ -154,7 +156,7 @@ char CHAR_P_UP[6][4] = {
     {WHITE,BLACK,BLACK,BLACK}
 };
 
-char CHAR_Q_UP[6][4] = {
+ uint8_t CHAR_Q_UP[6][4] = {
     {BLACK,WHITE,WHITE,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
@@ -163,7 +165,7 @@ char CHAR_Q_UP[6][4] = {
     {BLACK,BLACK,BLACK,WHITE}
 };
 
-char CHAR_R_UP[6][4] = {
+ uint8_t CHAR_R_UP[6][4] = {
     {WHITE,WHITE,WHITE,BLACK},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
@@ -172,7 +174,7 @@ char CHAR_R_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE}
 };
 
-char CHAR_S_UP[6][4] = {
+ uint8_t CHAR_S_UP[6][4] = {
     {BLACK,WHITE,WHITE,WHITE},
     {WHITE,BLACK,BLACK,BLACK},
     {BLACK,WHITE,WHITE,BLACK},
@@ -181,7 +183,7 @@ char CHAR_S_UP[6][4] = {
     {WHITE,WHITE,WHITE,BLACK}
 };
 
-char CHAR_T_UP[6][4] = {
+ uint8_t CHAR_T_UP[6][4] = {
     {BLACK,WHITE,WHITE,WHITE},
     {BLACK,BLACK,WHITE,BLACK},
     {BLACK,BLACK,WHITE,BLACK},
@@ -190,7 +192,7 @@ char CHAR_T_UP[6][4] = {
     {BLACK,BLACK,WHITE,BLACK}
 };
 
-char CHAR_U_UP[6][4] = {
+ uint8_t CHAR_U_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
@@ -199,7 +201,7 @@ char CHAR_U_UP[6][4] = {
     {BLACK,WHITE,WHITE,BLACK}
 };
 
-char CHAR_V_UP[6][4] = {
+ uint8_t CHAR_V_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
@@ -208,7 +210,7 @@ char CHAR_V_UP[6][4] = {
     {BLACK,WHITE,BLACK,BLACK}
 };
 
-char CHAR_W_UP[6][4] = {
+ uint8_t CHAR_W_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
@@ -217,7 +219,7 @@ char CHAR_W_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE}
 };
 
-char CHAR_X_UP[6][4] = {
+ uint8_t CHAR_X_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
     {WHITE,BLACK,BLACK,WHITE},
@@ -226,7 +228,7 @@ char CHAR_X_UP[6][4] = {
     {WHITE,BLACK,BLACK,WHITE}
 };
 
-char CHAR_Y_UP[6][4] = {
+ uint8_t CHAR_Y_UP[6][4] = {
     {BLACK,WHITE,BLACK,WHITE},
     {BLACK,WHITE,BLACK,WHITE},
     {BLACK,WHITE,BLACK,WHITE},
@@ -235,7 +237,7 @@ char CHAR_Y_UP[6][4] = {
     {BLACK,BLACK,WHITE,BLACK}
 };
 
-char CHAR_Z_UP[6][4] = {
+ uint8_t CHAR_Z_UP[6][4] = {
     {WHITE,WHITE,WHITE,WHITE},
     {BLACK,BLACK,BLACK,WHITE},
     {BLACK,BLACK,WHITE,BLACK},

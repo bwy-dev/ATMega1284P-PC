@@ -50,7 +50,7 @@ void vga_write_buffer_to_screen()
     PORTA = (1 << VSYNC); //send VSYNC signal to return to top left of screen
 }
 
-void vga_add_char_to_screen_buffer(char arr[6][4])
+void vga_add_char_to_screen_buffer(unsigned char arr[6][4])
 {
     uint8_t x = cursor_location.x * CHAR_WIDTH;
     uint8_t y = cursor_location.y * CHAR_HEIGHT;

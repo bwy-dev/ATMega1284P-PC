@@ -13,7 +13,7 @@
 
 void timer1_init()
 {
-    TCCR1A |= 0x00000101; //Initializes timer 1. CS02 and CS00 are set high so it will
+    TCCR1A |= 0b00000101; //Initializes timer 1. CS02 and CS00 are set high so it will
                           //run at 1024th base clock speed, around 20khz
     TCNT1 = 0;            //then reset value to 0.
 }
