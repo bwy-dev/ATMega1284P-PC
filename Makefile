@@ -1,5 +1,5 @@
 DEVICE = atmega1284p
-OBJS= main.o keyboard.o vga.o characters.c
+OBJS= main.o keyboard.o vga.o characters.o
 COMPILE= avr-gcc -Wall -Os -mmcu=$(DEVICE)
 
 all: main.hex
