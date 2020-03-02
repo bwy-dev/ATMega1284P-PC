@@ -67,8 +67,8 @@ void vga_move_cursor()
 {
     int x = cursor_location.x;
     int y = cursor_location.y;
-
     x++;
+
     if(x > FB_WIDTH/CHAR_WIDTH){
         y++;
         x=0;
