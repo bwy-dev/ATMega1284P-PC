@@ -10,6 +10,7 @@ int vga_vertical_sync();
 void vga_horizontal_sync();
 extern void write_line();
 
+
 //frame buffer constants
 #define FB_WIDTH      128    //frame buffer width
 #define FB_HEIGHT     94     //frame buffer height

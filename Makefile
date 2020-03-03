@@ -17,7 +17,7 @@ main.hex: main.elf
 		rm -f main.hex
 		avr-objcopy -j .text -j .data -O ihex main.elf main.hex
 		avr-size -C --mcu=$(DEVICE) main.elf
-		avr-objdump -d main.elf
+		#avr-objdump -d main.elf
 		make clean
 
 clean: 

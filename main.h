@@ -5,6 +5,7 @@
 #define F_CPU 20000000UL
 #define __AVR_ATmega1284P__
 #define __asm__ __asm
+extern void start_up(void);
 typedef unsigned char byte;
 typedef enum{
     true = 1,

@@ -1,14 +1,12 @@
 #ifndef KEYBOARD_H
 #define KEYBOARD_H
 
-char get_key();
-void set_key(char c);
-void timer1_init();
+char keyboard_check_input();
 
 #define NULL -0x01
 
 //KeyCodes
-#define KEY_1       0x00
+#define KEY_1       0x3A
 #define KEY_2       0x01
 #define KEY_3       0x02
 #define KEY_4       0x03

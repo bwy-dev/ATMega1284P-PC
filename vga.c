@@ -16,7 +16,7 @@
 
 
 volatile byte SCREEN_CONTENTS[FB_WIDTH/CHAR_WIDTH][FB_HEIGHT/CHAR_HEIGHT]; //Actual characters currently on screen
-volatile byte FRAME_BUFFER[FB_WIDTH][FB_HEIGHT];                           //individual pixels on screen
+volatile byte FRAME_BUFFER[FB_WIDTH][FB_HEIGHT] __attribute__((address(0x0370)));                           //individual pixels on screen
 
 struct Coord cursor_location;
 
@@ -197,9 +197,4 @@ void vga_add_char_at_cursor(char b)
     }
     SCREEN_CONTENTS[cursor_location.x][cursor_location.y] = c;
     vga_move_cursor();
-}
-
-void vga_write_line(volatile int start)
-{
-    write_line();
 }
