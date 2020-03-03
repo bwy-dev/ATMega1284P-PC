@@ -5,10 +5,9 @@ void vga_init();
 void vga_move_cursor();
 void vga_add_char_at_cursor(char b);
 void vga_add_char_to_frame_buffer(volatile char arr[6][4]);
-void vga_write_line(volatile int start);
 int vga_vertical_sync();
 void vga_horizontal_sync();
-extern void write_line();
+extern void write_line(void);
 
 
 //frame buffer constants

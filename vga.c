@@ -15,8 +15,8 @@
 #include <avr/io.h>
 
 
-volatile byte SCREEN_CONTENTS[FB_WIDTH/CHAR_WIDTH][FB_HEIGHT/CHAR_HEIGHT]; //Actual characters currently on screen
-volatile byte FRAME_BUFFER[FB_WIDTH][FB_HEIGHT] __attribute__((address(0x0370)));                           //individual pixels on screen
+volatile byte SCREEN_CONTENTS[FB_WIDTH/CHAR_WIDTH][FB_HEIGHT/CHAR_HEIGHT];		  //Actual characters currently on screen (ASCII)
+volatile byte FRAME_BUFFER[FB_WIDTH][FB_HEIGHT] __attribute__((address(0x0370))); //individual pixels on screen. it has a constant address so we know where to find it in assembly code
 
 struct Coord cursor_location;
 
@@ -25,8 +25,6 @@ void vga_init()
 {
     cursor_location.x = 0;
     cursor_location.y = 0;
-    //disable watchdog
-    WDTCSR = 0;
 
     int x,y;
     for(y = 0; y < FB_HEIGHT; y++){
@@ -34,6 +32,7 @@ void vga_init()
             FRAME_BUFFER[x][y] = 0x00;    //fill frame buffer with black pixels
         }
     }
+	FRAME_BUFFER[FB_WIDTH -1][FB_HEIGHT -1] = 0xBE; 
 }
 
 int vga_vertical_sync()
@@ -75,7 +74,6 @@ void vga_move_cursor()
     cursor_location.x = x;
     cursor_location.y = y;
 }
-
 
 void vga_add_char_at_cursor(char b)
 {
