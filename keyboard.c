@@ -8,11 +8,13 @@ volatile char key_to_write = NULL;
 
 char keyboard_check_input()
 {
-	if(PIND != 0x00 && PIND != key_to_write){
+	if(PIND != 0x00 && PIND != key_to_write)
+	{
 		PIND = key_to_write;
 		return (PIND >> 2);
 	}	
-	else{
+	else
+	{
 		return NULL;
 	}
 }

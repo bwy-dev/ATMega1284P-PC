@@ -4,18 +4,17 @@
 .equ OCR1AH,    0x89
 .equ OCR1AL,    0x88
 .equ TIMSK1,    0x6F
-.equ TCNT1,	    0x84
+.equ TCNT1L,	0x84
+.equ TCNT1H,	0x85
 .equ PORTA,     0x02
 .equ PORTC,		0x08
 .equ OC1Aaddr,  0x0034
-.equ FBUFSTART, 0x0370
-.equ FBUFEND,   0x326F
+.equ FBUFSTART, 0x0570
+.equ FBUFEND,   0x346F
 .equ HSYNC,     0x01
 .equ VSYNC,		0x02
 .equ HMASK,     0b11111110
 .equ VMASK,		0b11111101
-.org OC1Aaddr
-            rjmp write_line  
 
 start_up:  
 			ldi r16, 0b00001001 ; set timer1 to clock
@@ -27,7 +26,7 @@ start_up:
             ldi r16, lo8(800)   ;
             sts OCR1AL, r16     ;
             sei                 ; set global interrupts
-			sts TCNT1, 0		; set timer to 0
+			sts TCNT1L, 0		; set timer to 0
 			ret					;
 
 write_line: 
@@ -41,7 +40,8 @@ write_line:
 ;		  = 640 cycles to match the 640 pixel cycles of VGA				  ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 loop:
-			sts TCNT1, 0x0000	; 1 Cycle  : Set timer back to 0
+			sts TCNT1H, 0x00
+			sts TCNT1L, 0x00	; 2 Cycles  : Set timer back to 0
 			ld  r18, Y+			; 2 Cycles : Load pixel data from Y register
             out PORTA, r18		; 1 Cycle  : Send pixel data to screen
             nop;				; 1 Cycle  : Do Nothing (Padding)
@@ -661,12 +661,10 @@ loop:
 			nop
 			nop
 			nop
-			nop
-			nop				; 93 nop cycles : Padding
+			nop				; 92 nop cycles : Padding
 			mov r16, PORTC	; copy PORTC into r16	
 			ori r16, HSYNC  ; OR it with HSYNC pin
 			out PORTC, r16	; 1 Cycle : Set HSYNC high again
-			nop
 			nop
 			nop
 			nop

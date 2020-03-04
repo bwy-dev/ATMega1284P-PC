@@ -10,16 +10,8 @@
  * PORTA 0-3: VGA color out
  * PORTA 6-7: HSYNC & VSYNC
  */
-volatile int line;
 
-//void timer1_init()
-//{    
-//     TCCR1B |= 0x09;      //Timer Clock = System Clock.
-//     TIMSK1 |= 0x02;
-//     OCR1A = 800; //set timer to trigger every 800 cycles
-//     TCNT1 = 0;
-//	 sei();
-//}
+volatile int line = 1;
 
 void port_init()
 {
@@ -27,27 +19,32 @@ void port_init()
     DDRA = 0xFF; //set port a (VGA Out) to output
 }
 
-/*Drawing to Screen via VGA happens in an interrupt the we can hopefully make happen every full clock cycle of the VGA*/
- /*ISR(TIMER1_COMPA_vect)
- {
-	if(line > RES_HEIGHT)
+ISR(TIMER1_COMPA_vect)
+{
+	if(line == 1)
 	{
-		if (line > TOTAL_LINES)
-		{
-			line = 0;
-		}
-		else
-		{
-			line ++;
-		}
-		return;
+		write_line();
+		line = 480;
 	}
-    write_line();
-	line++;
-	return;
- }*/
-
-ISR(TIMER1_COMPA_vect){write_line();}
+	else if(line == 492)
+	{
+		PORTC &= 0b11111101;
+		line++;
+	}
+	else if (line == 494)
+	{
+		PORTC |= 0b00000010;
+		line++;
+	}
+	else if (line == 524)
+	{
+		line = 1;
+	}
+	else
+	{
+		line++;
+	}
+}
 
 int main (void)
 {

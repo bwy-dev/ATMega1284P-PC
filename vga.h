@@ -5,15 +5,13 @@ void vga_init();
 void vga_move_cursor();
 void vga_add_char_at_cursor(char b);
 void vga_add_char_to_frame_buffer(volatile char arr[6][4]);
-int vga_vertical_sync();
-void vga_horizontal_sync();
 extern void write_line(void);
 
 
 //frame buffer constants
 #define FB_WIDTH      128    //frame buffer width
 #define FB_HEIGHT     94     //frame buffer height
-//vga constants
+//VGA constants
 #define TOTAL_LINES   524    //total number of lines (vertical) including downtime
 #define TOTAL_CYCLES  800    //total number of cycles (horizontal) including downtime
 //actual pixel sizes
@@ -28,7 +26,7 @@ extern void write_line(void);
 
 /* Color definitions, pins for color are as follows: 
  * |0|1|2|3|4|5|6|7|
- * |R|R|G|G|B|B|x|x|
+ * |R|R|G|G|B|B|S|S|
  */
 
 #define RED      0b11000000
@@ -38,7 +36,7 @@ extern void write_line(void);
 #define MAGENTA  0b11001100
 #define CYAN     0b00111100
 #define BLACK    0b00000000
-#define WHITE    0b11111100
+#define WHITE    0b11111111
 #define LGREY    0b10101000
 #define DGREY    0b01010100
 

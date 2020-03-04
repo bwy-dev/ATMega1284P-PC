@@ -4,19 +4,14 @@
  *      Available at https://github.com/aarossig/avr-vga/blob/master/src/main.s  *
  *                                                                               *
 **********************************************************************************/
-/*
- *NOTE: There is currently no timing calculation being done, so this will not work properly at the moment
- *I do not currently have accesses to Atmel Studio, once I do I will calculate timings using Simulator and 
- *make necessary adjustments.
- */
+
 #include "vga.h"
 #include "main.h"
 #include "keyboard.h"
 #include <avr/io.h>
 
-
-volatile byte SCREEN_CONTENTS[FB_WIDTH/CHAR_WIDTH][FB_HEIGHT/CHAR_HEIGHT];		  //Actual characters currently on screen (ASCII)
-volatile byte FRAME_BUFFER[FB_WIDTH][FB_HEIGHT] __attribute__((address(0x0370))); //individual pixels on screen. it has a constant address so we know where to find it in assembly code
+//individual pixels on screen. it has a constant address so we know where to find it in assembly code
+volatile byte FRAME_BUFFER[FB_WIDTH][FB_HEIGHT] __attribute__((address(0x0570))); 
 
 struct Coord cursor_location;
 
@@ -27,24 +22,14 @@ void vga_init()
     cursor_location.y = 0;
 
     int x,y;
-    for(y = 0; y < FB_HEIGHT; y++){
-        for(x = 0; x < FB_WIDTH; x++){
+    for(y = 0; y < FB_WIDTH; y++)
+	{
+        for(x = 0; x < FB_HEIGHT; x++)
+		{
 			byte color = x % 2 == 0 ? BLUE : RED ;
-            FRAME_BUFFER[x][y] = color;    //fill frame buffer with black pixels
+            FRAME_BUFFER[y][x] = color;    //fill frame buffer with black pixels
         }
     }
-	FRAME_BUFFER[FB_WIDTH -1][FB_HEIGHT -1] = 0xBE; 
-}
-
-int vga_vertical_sync()
-{
-  PORTA = (1 << VSYNC);
-  return 0;
-}
-
-void vga_horizontal_sync()
-{
-  PORTA = (1 << HSYNC);
 }
 
 
@@ -54,8 +39,10 @@ void vga_horizontal_sync()
     uint8_t y = cursor_location.y * CHAR_HEIGHT;
     uint8_t i,j;
 
-    for(i = 0; i < CHAR_HEIGHT; i++){
-	    for(j = 0; j < CHAR_WIDTH; j++){
+    for(i = 0; i < CHAR_HEIGHT; i++)
+	{
+	    for(j = 0; j < CHAR_WIDTH; j++)
+		{
           FRAME_BUFFER[x + i][y + j/2] = arr[j][i];
         }
     }
@@ -65,10 +52,11 @@ void vga_move_cursor()
 {
     int x = cursor_location.x;
     int y = cursor_location.y;
-    x++;
+    x += CHAR_WIDTH;
 
-    if(x > FB_WIDTH/CHAR_WIDTH){
-        y++;
+    if(x > FB_WIDTH/CHAR_WIDTH)
+	{
+        y += CHAR_HEIGHT;
         x=0;
     }
 
@@ -194,6 +182,5 @@ void vga_add_char_at_cursor(char b)
           vga_add_char_to_frame_buffer(CHAR_SPACE); 
           break;
     }
-    SCREEN_CONTENTS[cursor_location.x][cursor_location.y] = c;
     vga_move_cursor();
 }
