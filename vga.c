@@ -29,7 +29,8 @@ void vga_init()
     int x,y;
     for(y = 0; y < FB_HEIGHT; y++){
         for(x = 0; x < FB_WIDTH; x++){
-            FRAME_BUFFER[x][y] = 0x00;    //fill frame buffer with black pixels
+			byte color = x % 2 == 0 ? BLUE : RED ;
+            FRAME_BUFFER[x][y] = color;    //fill frame buffer with black pixels
         }
     }
 	FRAME_BUFFER[FB_WIDTH -1][FB_HEIGHT -1] = 0xBE; 
