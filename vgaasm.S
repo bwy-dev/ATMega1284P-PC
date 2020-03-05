@@ -19,7 +19,7 @@
 start_up:  
 			ldi r16, 0b00001001 ; set timer1 to clock
             sts TCCR1B, r16     ;
-            ldi r16, 0b00000110 ; set timer1 match a interrupt
+            ldi r16, 0b00000010 ; set timer1 match a interrupt
             sts TIMSK1, r16     ;
             ldi r16, hi8(800)   ; set interrupt timings to
             sts OCR1AH, r16     ; 800 cycles.
