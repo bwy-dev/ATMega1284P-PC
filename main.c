@@ -51,7 +51,6 @@ int main (void)
 	port_init();
 	vga_init();
 	start_up();
-
 	while(1)
 	{
 		char c = keyboard_check_input();

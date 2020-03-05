@@ -29,20 +29,16 @@ extern void write_line(void);
  * |R|R|G|G|B|B|S|S|
  */
 
-#define RED      0b11000000
-#define GREEN    0b00110000
-#define BLUE     0b00001100
-#define YELLOW   0b11110000
-#define MAGENTA  0b11001100
+#define RED      0b00000011
+#define GREEN    0b00001100
+#define BLUE     0b00110000
+#define YELLOW   0b00111100
+#define MAGENTA  0b00110011
 #define CYAN     0b00111100
 #define BLACK    0b00000000
 #define WHITE    0b11111111
-#define LGREY    0b10101000
-#define DGREY    0b01010100
-
-//mask to isolate each half of color byte
-#define BYTEMASKL 0b00001111
-#define BYTEMASKH 0b11110000
+#define LGREY    0b00101010
+#define DGREY    0b00010101
 #endif
 
 #ifndef COORD_STRUCT
