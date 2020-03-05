@@ -1,10 +1,3 @@
-/*********************************************************************************
- *                                                                               *
- *              Adapted from Andrew Rossignol's AVR VGA code available at:       *
- *      Available at https://github.com/aarossig/avr-vga/blob/master/src/main.s  *
- *                                                                               *
-**********************************************************************************/
-
 #include "vga.h"
 #include "main.h"
 #include "keyboard.h"
@@ -27,7 +20,7 @@ void vga_init()
         for(x = 0; x < FB_HEIGHT; x++)
 		{
 			byte color = x % 2 == 0 ? BLUE : RED ;
-            FRAME_BUFFER[y][x] = color;    //fill frame buffer with black pixels
+            FRAME_BUFFER[y][x] = color;    //fill frame buffer with alternating blue and red pixels for testing
         }
     }
 }

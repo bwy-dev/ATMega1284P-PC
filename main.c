@@ -24,7 +24,7 @@ ISR(TIMER1_COMPA_vect)
 	if(line == 1)
 	{
 		write_line();
-		line = 480;
+		line = 481;
 	}
 	else if(line == 492)
 	{

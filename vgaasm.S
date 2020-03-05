@@ -1,3 +1,12 @@
+;*********************************************************************************;
+;                                                                                 ;
+;           Adapted from Andrew Rossignol's AVR VGA code available at:			  ;
+;           https://github.com/aarossig/avr-vga/blob/master/src/main.s			  ;
+;			   And also an article by LucidScience available here:				  ;
+;         http://www.lucidscience.com/pro-vga%20video%20generator-1.aspx		  ;
+;                                                                                 ;
+;*********************************************************************************;
+
 .global write_line
 .global start_up
 .equ TCCR1B,    0x81
@@ -12,7 +21,7 @@
 .equ FBUFSTART, 0x0570
 .equ FBUFEND,   0x346F
 .equ HSYNC,     0x01
-.equ VSYNC,	    0x02
+.equ VSYNC,		0x02
 .equ HMASK,     0b11111110
 .equ VMASK,     0b11111101
 .equ WIDTH,		0x80
@@ -38,7 +47,9 @@ write_line:
 			ldi r20, 0x00	; frame buffer vertical offset count
 			mov r16, PORTC	; copy PORTC into r16	
 			ori r16, HSYNC  ; OR it with HSYNC pin
-			out PORTC, r16	; 1 Cycle : Set HSYNC high
+			ori r16, VSYNC  ; OR that with VSYNC
+			out PORTC, r16	; 1 Cycle : Set HSYNC & VSYNC high
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;			4 Total Cycles per Pixel, 128 pixels per line				  ;
 ;		  = 512 cycles for 20Mhz adjusted pixel cycles for VGA			  ;
@@ -439,8 +450,8 @@ loop:
 			nop
 			nop
 			nop
+			nop
 			nop					    ; 13 Cycles of nop : Padding
-			mov  r16, PORTC
 			andi r16, HMASK
 			out  PORTC, r16      ; 1 Cycle : Set HSYNC low	
 			nop
@@ -515,8 +526,8 @@ loop:
 			nop
 			nop
 			nop
+			nop
 			nop				; 73 nop cycles : Padding
-			mov r16, PORTC	; copy PORTC into r16	
 			ori r16, HSYNC  ; OR it with HSYNC pin
 			out PORTC, r16	; 1 Cycle : Set HSYNC high again
 			nop
@@ -549,10 +560,11 @@ indicator:
 			nop
 			nop
 			nop
+			nop
 			inc  r20			;1 Cycle: increase pixel line count
 			jmp  loop			;3 Cycles : have to jump here from branch because it does an rjmp and loop is too far away for it to reach.
 
-resetmemloc: ; + 1 Cycle from extra branch cycle
+resetmemloc:						;1 Cycle from extra branch cycle
 			ldi r29, hi8(FBUFSTART) ;1 Cycle
 			ldi r28, lo8(FBUFSTART) ;1 Cycle
 			mov r19, r20			;1 Cycle: move line count to r19
