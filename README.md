@@ -5,11 +5,12 @@
 ### Planned Features
  - Custom Keyboard interaction, with generic keyboard interaction down the line
  - VGA output
+ - external memory and storage over SPI
  - Command Line Interface
  - Word Processing
  - AVR assembler to write code to be executed by the device (one day, a man can dream)
 
 ### Basic Circuit Diagram
-#### THIS IS CURRENTLY COMPLETELY WRONG I just haven't gotten round to updating it yet.
+#### Not final, I am looking to include storage over SPI, and the resistor values may need to be adjusted.
 
 ![alt text](https://raw.githubusercontent.com/bwy-dev/ATMega1284P-PC/master/ATMEGA1284P-CIRCUIT.png "Circuit Diagram")
